@@ -10,6 +10,10 @@ Every notebook runs in Google Colab. Open a notebook and click the **Open In Col
 
 ## At a glance
 
+https://gitdiagram.com/hossain8078/machine-learning-and-deep-learning
+
+
+
 | # | Notebook | Topic | Dataset | Key result |
 |---|---|---|---|---|
 | 1 | [Wine classification](Alamgir_BIS_Wine_Classification_EDA_and_RegressionModel.ipynb) | Multiclass classification, EDA | Wine (scikit-learn) | 94.4% test accuracy (34 of 36) |
