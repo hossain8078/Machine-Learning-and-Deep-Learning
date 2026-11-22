@@ -24,12 +24,13 @@ flowchart TB
         L3["Lab 3 · Iris GridSearchCV<br/>96.7% accuracy"]
         E4 --> L4 --> L3
     end
-    subgraph PL["3 · Pipelines & deployment"]
+    subgraph PL["3 · Pipelines, deep learning & deployment"]
         direction LR
         E5["Example 05 · ML pipelines"]
         L5["Lab 5 · Pima diabetes pipeline<br/>75.3% accuracy"]
+        L6["Lab 6 · CIFAR-10 CNN<br/>68.5% accuracy"]
         L7["Lab 7 · AWS deployment<br/>research"]
-        E5 --> L5 --> L7
+        E5 --> L5 --> L6 --> L7
     end
     C["★ Capstone · Telco customer churn<br/>Logistic Regression · Random Forest · Neural network<br/>ROC-AUC 0.84 · cost-based recommendation"]
 
@@ -52,6 +53,7 @@ Interactive repository diagram: [view on GitDiagram](https://gitdiagram.com/hoss
 | 3 | [Iris hyperparameter tuning](Lab_3_Iris_Hyperparameter_Tuning.ipynb) | GridSearchCV, pipelines | Iris (scikit-learn) | 96.7% test accuracy (29 of 30) |
 | 4 | [Titanic preprocessing](Lab_4_Titanic_Preprocessing.ipynb) | Missing values, encoding, ColumnTransformer | Titanic (seaborn) | 80.4% accuracy, ROC-AUC 0.84 |
 | 5 | [Pima diabetes pipeline](Lab_5_Pima_Diabetes_Pipeline.ipynb) | Scaling, feature selection and tuning in one pipeline | Pima Indians Diabetes | 75.3% accuracy vs 64.9% baseline |
+| 6 | [CIFAR-10 image classification](Lab_6_CIFAR10_CNN.ipynb) | Convolutional neural network (Keras) | CIFAR-10 (Keras) | 68.5% test accuracy vs 10% chance |
 | 7 | [Cloud deployment research](Lab_7_Cloud_Deployment_Research_AWS.ipynb) | Deployment options on AWS | – | Recommends Elastic Beanstalk for small models |
 | ★ | [**Capstone: customer churn**](Capstone_Project_MdAlamgir_Hossain.ipynb) | Classical ML vs deep learning | IBM Telco Customer Churn | ROC-AUC 0.84; cost-based recommendation |
 
@@ -119,6 +121,11 @@ Handles missing ages and ports using statistics from the training set only, drop
 
 A full pipeline (`StandardScaler` → `SelectKBest` → `RandomForestClassifier`) tuned end to end with `GridSearchCV` (18 combinations, 90 CV fits). Keeping every step inside the pipeline prevents data leakage. **Result:** 77.7% cross-validated accuracy and 75.3% on the test set, against a 64.9% majority-class baseline.
 
+### Lab 6 – Image classification with a CNN
+[`Lab_6_CIFAR10_CNN.ipynb`](Lab_6_CIFAR10_CNN.ipynb)
+
+Classifies 32×32 colour images into 10 classes (airplane, car, bird, cat, and so on) with a Keras convolutional neural network: three `Conv2D` layers, two `MaxPooling2D` layers, `Flatten`, a `Dense` layer and a softmax output (122,570 parameters). It is trained for 10 epochs with Adam and sparse categorical cross-entropy, and the notebook plots the learning curves, prints a per-class report and shows sample predictions. **Result:** 68.5% test accuracy (6,853 of 10,000 images), against 10% for random guessing. Trucks, frogs and ships are recognized best and cats worst. After about epoch 5, validation loss stops improving while training loss keeps falling, an early sign of overfitting.
+
 ### Lab 7 – Researching cloud deployment options
 [`Lab_7_Cloud_Deployment_Research_AWS.ipynb`](Lab_7_Cloud_Deployment_Research_AWS.ipynb)
 
@@ -148,7 +155,7 @@ These are the course's guided examples, which I worked through and extended.
 ## Skills demonstrated
 
 - **Data preparation:** EDA, missing-value handling, encoding, scaling, feature selection and engineering
-- **Modeling:** decision trees, Random Forest, Logistic and Linear Regression, neural networks (Keras)
+- **Modeling:** decision trees, Random Forest, Logistic and Linear Regression, neural networks and CNNs (Keras)
 - **Model selection:** `Pipeline`, `ColumnTransformer`, `GridSearchCV`, cross-validation, preventing data leakage
 - **Evaluation:** accuracy, precision, recall, F1, ROC-AUC, MSE/R², confusion matrices, baselines
 - **Business framing:** cost-based thresholds, interpretability trade-offs, deployment options
