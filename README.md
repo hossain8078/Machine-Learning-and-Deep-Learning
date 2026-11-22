@@ -7,7 +7,35 @@ Every notebook runs in Google Colab. Open a notebook and click the **Open In Col
 **Author:** Md Alamgir Hossain, PMP, CSM, ITIL v5 · [LinkedIn](https://www.linkedin.com/in/alamgircanb) · [pmport.ca](https://pmport.ca)
 
 
-https://gitdiagram.com/hossain8078/machine-learning-and-deep-learning
+## Course map
+
+```mermaid
+flowchart LR
+    subgraph F["Foundations"]
+        L1["Lab 1<br/>Wine classification<br/>94.4% accuracy"]
+        L2["Lab 2<br/>Diabetes regression<br/>R² 0.23 → 0.45"]
+    end
+    subgraph P["Data prep & tuning"]
+        E4["Example 04<br/>Preprocessing &<br/>feature engineering"]
+        L4["Lab 4<br/>Titanic preprocessing<br/>80.4% accuracy"]
+        L3["Lab 3<br/>Iris GridSearchCV<br/>96.7% accuracy"]
+    end
+    subgraph PL["Pipelines"]
+        E5["Example 05<br/>ML pipelines"]
+        L5["Lab 5<br/>Pima diabetes pipeline<br/>75.3% accuracy"]
+    end
+    subgraph D["Deployment"]
+        L7["Lab 7<br/>AWS deployment research<br/>Elastic Beanstalk"]
+    end
+    C["★ Capstone<br/>Telco churn<br/>LogReg · RF · Neural net<br/>ROC-AUC 0.84"]
+
+    L1 --> L2 --> E4 --> L4 --> L3 --> E5 --> L5 --> L7 --> C
+
+    classDef cap fill:#fde68a,stroke:#b45309,stroke-width:2px,color:#000;
+    class C cap;
+```
+
+Interactive repository diagram: [view on GitDiagram](https://gitdiagram.com/hossain8078/machine-learning-and-deep-learning)
 
 ---
 
