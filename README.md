@@ -6,13 +6,12 @@ Every notebook runs in Google Colab. Open a notebook and click the **Open In Col
 
 **Author:** Md Alamgir Hossain, PMP, CSM, ITIL v5 · [LinkedIn](https://www.linkedin.com/in/alamgircanb) · [pmport.ca](https://pmport.ca)
 
----
-
-## At a glance
 
 https://gitdiagram.com/hossain8078/machine-learning-and-deep-learning
 
+---
 
+## At a glance
 
 | # | Notebook | Topic | Dataset | Key result |
 |---|---|---|---|---|
