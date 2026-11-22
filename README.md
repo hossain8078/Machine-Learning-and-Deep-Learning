@@ -10,26 +10,30 @@ Every notebook runs in Google Colab. Open a notebook and click the **Open In Col
 ## Course map
 
 ```mermaid
-flowchart LR
-    subgraph F["Foundations"]
-        L1["Lab 1<br/>Wine classification<br/>94.4% accuracy"]
-        L2["Lab 2<br/>Diabetes regression<br/>R² 0.23 → 0.45"]
+flowchart TB
+    subgraph F["1 · Foundations"]
+        direction LR
+        L1["Lab 1 · Wine classification<br/>94.4% accuracy"]
+        L2["Lab 2 · Diabetes regression<br/>R² 0.23 → 0.45"]
+        L1 --> L2
     end
-    subgraph P["Data prep & tuning"]
-        E4["Example 04<br/>Preprocessing &<br/>feature engineering"]
-        L4["Lab 4<br/>Titanic preprocessing<br/>80.4% accuracy"]
-        L3["Lab 3<br/>Iris GridSearchCV<br/>96.7% accuracy"]
+    subgraph P["2 · Data prep & tuning"]
+        direction LR
+        E4["Example 04 · Preprocessing<br/>& feature engineering"]
+        L4["Lab 4 · Titanic preprocessing<br/>80.4% accuracy"]
+        L3["Lab 3 · Iris GridSearchCV<br/>96.7% accuracy"]
+        E4 --> L4 --> L3
     end
-    subgraph PL["Pipelines"]
-        E5["Example 05<br/>ML pipelines"]
-        L5["Lab 5<br/>Pima diabetes pipeline<br/>75.3% accuracy"]
+    subgraph PL["3 · Pipelines & deployment"]
+        direction LR
+        E5["Example 05 · ML pipelines"]
+        L5["Lab 5 · Pima diabetes pipeline<br/>75.3% accuracy"]
+        L7["Lab 7 · AWS deployment<br/>research"]
+        E5 --> L5 --> L7
     end
-    subgraph D["Deployment"]
-        L7["Lab 7<br/>AWS deployment research<br/>Elastic Beanstalk"]
-    end
-    C["★ Capstone<br/>Telco churn<br/>LogReg · RF · Neural net<br/>ROC-AUC 0.84"]
+    C["★ Capstone · Telco customer churn<br/>Logistic Regression · Random Forest · Neural network<br/>ROC-AUC 0.84 · cost-based recommendation"]
 
-    L1 --> L2 --> E4 --> L4 --> L3 --> E5 --> L5 --> L7 --> C
+    F --> P --> PL --> C
 
     classDef cap fill:#fde68a,stroke:#b45309,stroke-width:2px,color:#000;
     class C cap;
