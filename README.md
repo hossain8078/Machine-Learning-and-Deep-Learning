@@ -13,9 +13,11 @@ Every notebook runs in Google Colab. Open a notebook and click the **Open In Col
 flowchart TB
     subgraph F["1 · Foundations"]
         direction LR
+        E1["Example 01 · Classification"]
         L1["Lab 1 · Wine classification<br/>94.4% accuracy"]
+        E2["Example 02 · Regression"]
         L2["Lab 2 · Diabetes regression<br/>R² 0.23 → 0.45"]
-        L1 --> L2
+        E1 --> L1 --> E2 --> L2
     end
     subgraph P["2 · Data prep & tuning"]
         direction LR
@@ -28,9 +30,10 @@ flowchart TB
         direction LR
         E5["Example 05 · ML pipelines"]
         L5["Lab 5 · Pima diabetes pipeline<br/>75.3% accuracy"]
+        E6["Example 06 · Deep learning<br/>(MNIST)"]
         L6["Lab 6 · CIFAR-10 CNN<br/>68.5% accuracy"]
-        L7["Lab 7 · AWS deployment<br/>research"]
-        E5 --> L5 --> L6 --> L7
+        L7["Lab 7 · Cloud deployment<br/>research (AWS & GCP)"]
+        E5 --> L5 --> E6 --> L6 --> L7
     end
     C["★ Capstone · Telco customer churn<br/>Logistic Regression · Random Forest · Neural network<br/>ROC-AUC 0.84 · cost-based recommendation"]
 
@@ -54,7 +57,7 @@ Interactive repository diagram: [view on GitDiagram](https://gitdiagram.com/hoss
 | 4 | [Titanic preprocessing](Lab_4_Titanic_Preprocessing.ipynb) | Missing values, encoding, ColumnTransformer | Titanic (seaborn) | 80.4% accuracy, ROC-AUC 0.84 |
 | 5 | [Pima diabetes pipeline](Lab_5_Pima_Diabetes_Pipeline.ipynb) | Scaling, feature selection and tuning in one pipeline | Pima Indians Diabetes | 75.3% accuracy vs 64.9% baseline |
 | 6 | [CIFAR-10 image classification](Lab_6_CIFAR10_CNN.ipynb) | Convolutional neural network (Keras) | CIFAR-10 (Keras) | 68.5% test accuracy vs 10% chance |
-| 7 | [Cloud deployment research](Lab_7_Cloud_Deployment_Research_AWS.ipynb) | Deployment options on AWS | – | Recommends Elastic Beanstalk for small models |
+| 7 | Cloud deployment research: [AWS](Lab_7_Cloud_Deployment_Research_AWS.ipynb) · [GCP](Lab_7_Cloud_Deployment_Research_GCP.ipynb) | PaaS vs CaaS vs FaaS | – | AWS: Elastic Beanstalk · GCP: Cloud Run |
 | ★ | [**Capstone: customer churn**](Capstone_Project_MdAlamgir_Hossain.ipynb) | Classical ML vs deep learning | IBM Telco Customer Churn | ROC-AUC 0.84; cost-based recommendation |
 
 The course examples I worked through are listed [further down](#course-example-notebooks).
@@ -139,6 +142,8 @@ A research report comparing three ways to serve a Flask-wrapped scikit-learn mod
 
 The report covers features, the deployment steps, cost and the trade-offs between them. **Recommendation:** Elastic Beanstalk for a small model, because it is the simplest path to production.
 
+[`Lab_7_Cloud_Deployment_Research_GCP.ipynb`](Lab_7_Cloud_Deployment_Research_GCP.ipynb) is a second report that does the same comparison on Google Cloud: App Engine (PaaS), Cloud Run (CaaS) and Cloud Run functions (FaaS). **Recommendation:** Cloud Run. It scales to zero, so a small app costs little or nothing, it runs the existing Flask app unchanged in a container, and it has no library or size limits.
+
 ---
 
 ## Course example notebooks
@@ -147,8 +152,11 @@ These are the course's guided examples, which I worked through and extended.
 
 | Notebook | Topic |
 |---|---|
+| [`01_Classification_Example.ipynb`](01_Classification_Example.ipynb) | Introduction to classification on Iris: decision tree (93.3%), KNN (96.7%) and Logistic Regression (96.7%) compared with confusion matrices and reports |
+| [`02_Regression_Example.ipynb`](02_Regression_Example.ipynb) | Introduction to regression on California Housing: Linear, Ridge and Lasso regression compared with MSE, RMSE, MAE and R² (best R² 0.58) |
 | [`04_Preprocessing_Feature_Engineering.ipynb`](04_Preprocessing_Feature_Engineering.ipynb) | Missing-value analysis, imputation, encoding and feature engineering on the Titanic data (84% pipeline accuracy), plus a leakage-aware comparison and ideas for further work |
 | [`05_Pipelines.ipynb`](05_Pipelines.ipynb) | Pipelines with `ColumnTransformer`, tuning, data leakage, imbalanced data, saving models, custom transformers and ensembles |
+| [`06_Deep_Learning.ipynb`](06_Deep_Learning.ipynb) | Introduction to deep learning on MNIST handwritten digits: a dense neural network (98.0% test accuracy) compared with a simple CNN (98.1%), with training curves and misclassified examples |
 
 ---
 
@@ -158,11 +166,11 @@ These are the course's guided examples, which I worked through and extended.
 - **Modeling:** decision trees, Random Forest, Logistic and Linear Regression, neural networks and CNNs (Keras)
 - **Model selection:** `Pipeline`, `ColumnTransformer`, `GridSearchCV`, cross-validation, preventing data leakage
 - **Evaluation:** accuracy, precision, recall, F1, ROC-AUC, MSE/R², confusion matrices, baselines
-- **Business framing:** cost-based thresholds, interpretability trade-offs, deployment options
+- **Business framing:** cost-based thresholds, interpretability trade-offs, cloud deployment options (AWS, GCP)
 
 ## Tools and libraries
 
-Python · pandas · NumPy · Matplotlib · seaborn · scikit-learn · TensorFlow / Keras · Google Colab · AWS (research)
+Python · pandas · NumPy · Matplotlib · seaborn · scikit-learn · TensorFlow / Keras · Google Colab · AWS and Google Cloud (research)
 
 ## How to run
 
